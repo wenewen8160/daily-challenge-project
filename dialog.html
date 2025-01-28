@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>dialog</title>
+    <style>
+              .container{
+                  height: 400px;
+              }
+            dialog::backdrop {
+              background-color: rgb(255, 230, 160);
+            }
+            dialog {
+              background-color: #bd0202;
+              color: #ffda47;
+              width: 300px;
+              height: 500px;
+              border-radius: 15px;
+              align-items: center;
+              justify-content: center;
+              text-align: center;
+              border: none;
+              box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+              letter-spacing: 3px;
+            }
+            dialog h1{
+            
+              font-size: 50px;
+              margin-top: 50px;
+
+            }
+            dialog p{
+              color: #ffda47;
+             font-size: 20px;
+             font-weight: bold;
+             margin: 0px;
+            }
+            .btn2 {
+              border-radius: 5px;
+              border: none;
+              margin-top: 10px;
+              background-color: #f9f9f9;
+              box-shadow:  2px 3px #7a0202;
+              font-weight: bold;
+              cursor: pointer;
+              position: absolute;
+              bottom: 50px;
+              transform:translateX(-50%) ;
+            }
+           .btn2:hover {
+              transform: scale(1.1);
+              padding: 8px 16px;
+              position: absolute;
+              bottom: 50px;
+              transform:translateX(-50%) ;
+            }
+            dialog img {
+              width: 200px;
+            }
+            .btn1{
+              padding: 10px 20px;
+              color: #fff;
+              border: none;
+              border-radius: 5px;
+              cursor: pointer;
+              background-color: #bd0202;
+              position: absolute;
+              top: 30%;
+              left: 50%;
+              position: absolute;
+              transform: translateX(-50%);
+              letter-spacing: 3px;
+              text-align: center;
+              font-size: 20px;
+            }
+            @media (max-width: 600px) {
+              dialog{
+                  width: 60%;
+                  height: 60%;
+              }
+              dialog h1 {
+                font-size: 2.5rem;
+                margin-top: 25%;
+                letter-spacing: 5px;
+                
+              }
+      .container{
+         position: relative;
+         height: 80%;
+         display: block;
+         align-items: center;
+        }
+              dialog p {
+                font-size: 1rem;
+                bottom: 120px;
+               
+
+              }
+              .btn1 {
+                font-size: 16px;
+                padding: 8px 16px;
+                top: 30%;
+                left: 50%;
+                position: absolute;
+              }
+              dialog img {
+                width: 200px;
+                margin-top: 10px;
+              }
+              .btn2{
+                  position: absolute;
+                  transform: translateX(-50%);
+                  bottom: 5px;
+              }
+            }
+    </style>
+  </head>
+  <body>
+    <dialog>
+      <div class="container">
+        <h1>新年快樂</h1>
+        <div><img src="./img/pngtree-gold-ingot-png-image_2412790.png" /></div>
+        <p>祝大家蛇麼都順利</p>
+        <button class="btn2">領取紅包</button>
+      </div>
+    </dialog>
+    <button class="btn1">點我發大財</button>
+    <script>
+      const dialog = document.querySelector("dialog");
+      const btns = document.querySelectorAll("button");
+      btns[0].addEventListener("click", function () {
+        dialog.close();
+      });
+      btns[1].addEventListener("click", () => {
+        dialog.showModal();
+      });
+    </script>
+  </body>
+</html>
