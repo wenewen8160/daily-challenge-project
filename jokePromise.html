@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Retro Joke Generator</title>
+    <style>
+      body {
+        font-family: "Courier New", Courier, monospace;
+        background-color: #f4f1de;
+        color: #3d348b;
+        text-align: center;
+        padding: 20px;
+      }
+    
+      h1 {
+        font-size: 2.5rem;
+        color: #ff6700;
+        text-shadow: 2px 2px #2e294e;
+      }
+
+      .joke-container {
+        margin-top: 20px;
+        padding: 20px;
+        border: 3px dashed #1982c4;
+        border-radius: 15px;
+        background-color: #e0fbfc;
+        box-shadow: 5px 5px 0px #6a4c93;
+        display: inline-block;
+        width: 80%;
+        max-width: 600px;
+      }
+
+      button {
+        margin-top: 20px;
+        padding: 10px 20px;
+        border: 2px solid #3d348b;
+        border-radius: 5px;
+        background-color: #ffbe0b;
+        color: #3d348b;
+        font-size: 1.2rem;
+        font-weight: bold;
+        cursor: pointer;
+        box-shadow: 3px 3px 0px #2e294e;
+      }
+
+      button:hover {
+        background-color: #fb5607;
+        color: white;
+      }
+
+      button:active {
+        box-shadow: none;
+        transform: translate(2px, 2px);
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Random Joke Generator</h1>
+    
+      <div class="joke-container" id="joke">
+        Click the button to load a joke!
+      </div>
+      <button id="jokeBtn">Get a Joke</button>
+   
+    <!-- <script
+      src="https://code.jquery.com/jquery-3.7.1.js"
+      integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4="
+      crossorigin="anonymous"
+    ></script> -->
+    <script>
+      document
+        .getElementById("jokeBtn")
+        .addEventListener("click", generateJoke);
+
+      async function generateJoke() {
+        const jokeContainer = document.getElementById("joke");
+
+        try {
+          const response = await fetch(
+            "https://official-joke-api.appspot.com/random_joke"
+          );
+          const data = await response.json();
+
+          jokeContainer.innerHTML = `<p><strong>${data.setup}</strong></p><p>${data.punchline}</p>`;
+        } catch (error) {
+          jokeContainer.innerHTML = `<p>Failed to fetch a joke. Please try again later.</p>`;
+          console.error("Error fetching joke:", error);
+        }
+        
+      }
+
+      //   new Promise((resolve, reject) => {
+      //     $.getJSON(
+      //       "https://official-joke-api.appspot.com/random_joke",
+      //       (data) => {
+      //         resolve(data);
+      //       }
+      //     )
+      //       .fail((error) => {
+      //         reject("api連線錯誤");
+      //       })
+      //       .then((result) => {
+      //         console.log(result);
+      //         document.querySelector(".p1").textContent = `${result.setup}`;
+      //         document.querySelector(".p2").textContent = `${result.punchline}`;
+      //       })
+      //       .catch((error) => {
+      //         console.log(error);
+      //       });
+      //   });
+    </script>
+  </body>
+</html>
